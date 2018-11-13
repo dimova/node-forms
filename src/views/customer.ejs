@@ -1,31 +1,76 @@
 <!-- views/customer.ejs -->
+<div class="form-header">
+    <% if (Object.keys(errors).length === 0) { %>
+    <h2>Submit please!</h2>
+    <% } else { %>
+    <h2 class="errors-heading">Oops, please correct the following:</h2>
+    <ul class="errors-list">
+        <% Object.values(errors).forEach(error => { %>
+        <li>
+            <%= error.msg %>
+        </li>
+        <% }) %>
+    </ul>
+    <% } %>
+</div>
 <p>Моля, попълнете информацията:</p>
 <form method="post" action="/customer" novalidate>
-<div class="form-field">
-    Начален адрес:
-    <br><input type="text" id="fromAddress" name="fromAddress" style="width: 350px;"><br>
-</div>
-<div class="form-field">
-    Краен адрес:
-    <br><input type="text" id="toAddress" name="toAddress" style="width: 350px;"><br>
-</div>
-<div class="form-field">
-    Детайли за колата:
-    <br><input type="text" id="carDetails" name="carDetails" style="width: 350px;"><br>
-</div>
-<div class="form-field">
-    Phone number of the caller:
-    <br><input type="text" id="customerNumber" name="customerNumber" style="width: 350px;"><br>
-</div>
-<div class="form-field">
-    Operator ID:
-    <br><input type="text" id="operatorID" name="operatorID" style="width: 350px;"><br>
-</div>
-<div class="form-field">
-    Call ID:
-    <br><input type="text" id="callID" name="callID" style="width: 350px;"><br>
-</div>
-<div class="form-actions">
-    <button class="btn" type="submit">Submit</button>
-</div>
+    <div class="form-field <%= errors.fromAddress ? 'form-field-invalid' : '' %>">
+        Начален адрес:
+        <br><input class="input" type="text" id="fromAddress" name="fromAddress" value="<%= data.fromAddress %>" style="width: 350px;">
+        <br>
+        <% if (errors.fromAddress) { %>
+        <div class="error">
+        <%= errors.fromAddress.msg %>
+    </div>
+    <% } %>
+    </div>
+    <div class="form-field <%= errors.toAddress ? 'form-field-invalid' : '' %>">
+        Краен адрес:
+        <br><input type="text" id="toAddress" name="toAddress" value="<%= data.toAddress %>" style="width: 350px;"><br>
+        <% if (errors.toAddress) { %>
+        <div class="error">
+            <%= errors.toAddress.msg %>
+        </div>
+        <% } %>
+    </div>
+    <div class="form-field <%= errors.carDetails ? 'form-field-invalid' : '' %>">
+        Детайли за колата:
+        <br><input type="text" id="carDetails" name="carDetails" value="<%= data.carDetails %>" style="width: 350px;"><br>
+        <% if (errors.carDetails) { %>
+            <div class="error">
+                <%= errors.carDetails.msg %>
+            </div>
+            <% } %>
+    </div>
+    <div class="form-field <%= errors.customerNumber ? 'form-field-invalid' : '' %>">
+        Phone number of the caller:
+        <br><input type="text" id="customerNumber" name="customerNumber" value="<%= data.customerNumber %>" style="width: 350px;"><br>
+        <% if (errors.customerNumber) { %>
+            <div class="error">
+                <%= errors.customerNumber.msg %>
+            </div>
+            <% } %>
+    </div>
+    <div class="form-field <%= errors.operatorID ? 'form-field-invalid' : '' %>">
+        Operator ID:
+        <br><input type="text" id="operatorID" name="operatorID" value="<%= data.operatorID %>" style="width: 350px;"><br>
+        <% if (errors.operatorID) { %>
+            <div class="error">
+                <%= errors.operatorID.msg %>
+            </div>
+            <% } %>
+    </div>
+    <div class="form-field <%= errors.callID ? 'form-field-invalid' : '' %>">
+        Call ID:
+        <br><input type="text" id="callID" name="callID" style="width: 350px;"><br>
+        <% if (errors.callID) { %>
+            <div class="error">
+                <%= errors.callID.msg %>
+            </div>
+            <% } %>
+    </div>
+    <div class="form-actions">
+        <button class="btn" type="submit">Submit</button>
+    </div>
 </form>

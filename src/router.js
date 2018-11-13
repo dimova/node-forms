@@ -24,16 +24,16 @@ router.post('/customer', (req, res) => {
         msg: 'An address is required'
       },
       carDetails: {
-        msg: 'Required field'
+        msg: 'Car details is required'
       },
       customerNumber: {
-        msg: 'Required field'
+        msg: 'Customer number is required'
       },
       operatorID: {
-        msg: 'Required field'
+        msg: 'Operator ID is required'
       },
       callID: {
-        msg: 'Required field'
+        msg: 'Call ID is required'
       }
     }
   })
