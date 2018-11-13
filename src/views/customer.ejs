@@ -1,0 +1,31 @@
+<!-- views/customer.ejs -->
+<p>Моля, попълнете информацията:</p>
+<form method="post" action="/customer" novalidate>
+<div class="form-field">
+    Начален адрес:
+    <br><input type="text" id="fromAddress" name="fromAddress" style="width: 350px;"><br>
+</div>
+<div class="form-field">
+    Краен адрес:
+    <br><input type="text" id="toAddress" name="toAddress" style="width: 350px;"><br>
+</div>
+<div class="form-field">
+    Детайли за колата:
+    <br><input type="text" id="carDetails" name="carDetails" style="width: 350px;"><br>
+</div>
+<div class="form-field">
+    Phone number of the caller:
+    <br><input type="text" id="customerNumber" name="customerNumber" style="width: 350px;"><br>
+</div>
+<div class="form-field">
+    Operator ID:
+    <br><input type="text" id="operatorID" name="operatorID" style="width: 350px;"><br>
+</div>
+<div class="form-field">
+    Call ID:
+    <br><input type="text" id="callID" name="callID" style="width: 350px;"><br>
+</div>
+<div class="form-actions">
+    <button class="btn" type="submit">Submit</button>
+</div>
+</form>
