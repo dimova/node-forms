@@ -3,7 +3,7 @@ const path = require('path')
 const express = require('express')
 const layout = require('express-layout')
 
-const routes = require('./routes')
+const routes = require('./router')
 const app = express()
 
 const bodyParser = require('body-parser')
