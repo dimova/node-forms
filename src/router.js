@@ -2,6 +2,10 @@
 const express = require('express')
 const router = express.Router()
 
+const { check, validationResult } = require('express-validator/check')
+const { matchedData } = require('express-validator/filter')
+const multer = require('multer')
+const upload = multer({ storage: multer.memoryStorage() })
 router.get('/', (req, res) => {
   res.render('index')
 })
@@ -9,34 +13,58 @@ router.get('/', (req, res) => {
 router.get('/customer', (req, res) => {
   res.render('customer', {
     data: {},
-    errors: {}
+    errors: {},
+    csrfToken: req.csrfToken()
   })
 })
 
-router.post('/customer', (req, res) => {
-  res.render('customer', {
-    data: req.body, // { fromAddress, toAddress, carDetails, customerNumber, operatorID, callID }
-    errors: {
-      fromAddress: {
-        msg: 'An address is required'
-      },
-      toAddress: {
-        msg: 'An address is required'
-      },
-      carDetails: {
-        msg: 'Car details is required'
-      },
-      customerNumber: {
-        msg: 'Customer number is required'
-      },
-      operatorID: {
-        msg: 'Operator ID is required'
-      },
-      callID: {
-        msg: 'Call ID is required'
-      }
-    }
-  })
+router.post('/customer',[
+  check('fromAddress')
+    .isLength({ min: 1 })
+    .withMessage('An address is required')
+    .trim(),
+  check('toAddress')
+    .isLength({ min: 1 })
+    .withMessage('An address is required')
+    .trim(),
+  check('time')
+    .isAfter()
+    .withMessage('Date and Time are required'),
+  check('carDetails')
+    .isLength({ min: 1 })
+    .withMessage('Car details is required')
+    .trim(),
+  check('customerNumber')
+    .isLength({ min: 1 })
+    .withMessage('Customer number is required')
+    .trim(),
+  check('operatorID')
+    .isLength({ min: 1 })
+    .withMessage('Operator ID is required')
+    .trim(),
+  check('callID')
+    .isLength({ min: 1 })
+    .withMessage('Call ID is required')
+    .trim()
+], (req, res) => {
+  const errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    return res.render('customer', {
+      data: req.body,
+      errors: errors.mapped(),
+      csrfToken: req.csrfToken()
+    })
+  }
+
+  const data = matchedData(req)
+  console.log('Form Data:', data)
+   // To do: send sanitized data in an email or persist in a db
+   if (req.file) {
+    console.log('Uploaded: ', req.file)
+    // To do: Upload file to S3
+  }
+   req.flash('success', 'Thanks for the submitting the form! :)')
+   res.redirect('/')
 })
 
 module.exports = router
