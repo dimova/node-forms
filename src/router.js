@@ -55,14 +55,10 @@ router.post('/customer',[
       csrfToken: req.csrfToken()
     })
   }
-
   const data = matchedData(req)
   console.log('Form Data:', data)
    // To do: send sanitized data in an email or persist in a db
-   if (req.file) {
-    console.log('Uploaded: ', req.file)
-    // To do: Upload file to S3
-  }
+   
    req.flash('success', 'Thanks for submitting the form! :)')
    res.redirect('/')
 })
