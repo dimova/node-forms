@@ -4,8 +4,7 @@ const router = express.Router()
 
 const { check, validationResult } = require('express-validator/check')
 const { matchedData } = require('express-validator/filter')
-const multer = require('multer')
-const upload = multer({ storage: multer.memoryStorage() })
+
 router.get('/', (req, res) => {
   res.render('index')
 })
