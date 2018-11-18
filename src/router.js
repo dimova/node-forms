@@ -63,7 +63,7 @@ router.post('/customer',[
     console.log('Uploaded: ', req.file)
     // To do: Upload file to S3
   }
-   req.flash('success', 'Thanks for the submitting the form! :)')
+   req.flash('success', 'Thanks for submitting the form! :)')
    res.redirect('/')
 })
 
