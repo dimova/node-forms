@@ -17,7 +17,7 @@
     <input type="hidden" name="_csrf" value="<%= csrfToken %>">
     <div class="form-field <%= errors.fromAddress ? 'form-field-invalid' : '' %>">
         Начален адрес:
-        <br><input class="input" type="text" id="fromAddress" name="fromAddress" value="<%= data.fromAddress %>">
+        <br><label for="fromAddress"></label><input class="input" type="text" id="fromAddress" name="fromAddress" value="<%= data.fromAddress %>">
         <br>
         <% if (errors.fromAddress) { %>
         <div class="error">
@@ -27,7 +27,7 @@
     </div>
     <div class="form-field <%= errors.toAddress ? 'form-field-invalid' : '' %>">
         Краен адрес:
-        <br><input class="input" type="text" id="toAddress" name="toAddress" value="<%= data.toAddress %>"><br>
+        <br><label for="toAddress"></label><input class="input" type="text" id="toAddress" name="toAddress" value="<%= data.toAddress %>"><br>
         <% if (errors.toAddress) { %>
         <div class="error">
             <%= errors.toAddress.msg %>
@@ -36,7 +36,7 @@
     </div>
     <div class="form-field <%= errors.time ? 'form-field-invalid' : '' %>">
         Време:
-        <br><input class="input" type="datetime-local" id="time" name="time" value=<%=data.time %>>
+        <br><label for="time"></label><input class="input" type="text" id="time" name="time" value=<%= data.time %>>
         <br>
         <% if (errors.time) { %>
         <div class="error">
@@ -46,7 +46,7 @@
     </div>
     <div class="form-field <%= errors.carDetails ? 'form-field-invalid' : '' %>">
         Детайли за колата:
-        <br><input class="input"  type="text" id="carDetails" name="carDetails" value="<%= data.carDetails %>"><br>
+        <br><label for="carDetails"></label><input class="input" type="text" id="carDetails" name="carDetails" value="<%= data.carDetails %>"><br>
         <% if (errors.carDetails) { %>
         <div class="error">
             <%= errors.carDetails.msg %>
@@ -55,7 +55,7 @@
     </div>
     <div class="form-field <%= errors.customerNumber ? 'form-field-invalid' : '' %>">
         Phone number of the caller:
-        <br><input class="input"  type="text" id="customerNumber" name="customerNumber" value="<%= data.customerNumber %>"><br>
+        <br><label for="customerNumber"></label><input class="input" type="text" id="customerNumber" name="customerNumber" readonly="readonly" value="autofilled"><br>
         <% if (errors.customerNumber) { %>
         <div class="error">
             <%= errors.customerNumber.msg %>
@@ -64,7 +64,7 @@
     </div>
     <div class="form-field <%= errors.operatorID ? 'form-field-invalid' : '' %>">
         Operator ID:
-        <br><input class="input"  type="text" id="operatorID" name="operatorID" value="<%= data.operatorID %>"><br>
+        <br><label for="operatorID"></label><input class="input" type="text" id="operatorID" name="operatorID" readonly="readonly" value="autofilled"><br>
         <% if (errors.operatorID) { %>
         <div class="error">
             <%= errors.operatorID.msg %>
@@ -73,7 +73,8 @@
     </div>
     <div class="form-field <%= errors.callID ? 'form-field-invalid' : '' %>">
         Call ID:
-        <br><input class="input" type="text" id="callID" name="callID" value="<%= data.callID %>"><br>
+        <br><label for="callID"></label><input class="input" type="text" id="callID" name="callID" readonly="readonly"
+                                               value="autofilled"><br>
         <% if (errors.callID) { %>
         <div class="error">
             <%= errors.callID.msg %>
