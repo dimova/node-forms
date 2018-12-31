@@ -17,7 +17,7 @@
     <input type="hidden" name="_csrf" value="<%= csrfToken %>">
     <div class="form-field <%= errors.fromAddress ? 'form-field-invalid' : '' %>">
         Начален адрес:
-        <br><label for="fromAddress"></label><input class="input" type="text" id="fromAddress" name="fromAddress" value="<%= data.fromAddress %>">
+        <br><label for="fromAddress"></label><input class="input" type="text" tabindex="1" id="fromAddress" name="fromAddress" value="<%= data.fromAddress %>" autofocus>
         <br>
         <% if (errors.fromAddress) { %>
         <div class="error">
@@ -27,7 +27,7 @@
     </div>
     <div class="form-field <%= errors.toAddress ? 'form-field-invalid' : '' %>">
         Краен адрес:
-        <br><label for="toAddress"></label><input class="input" type="text" id="toAddress" name="toAddress" value="<%= data.toAddress %>"><br>
+        <br><label for="toAddress"></label><input class="input" type="text" tabindex="2" id="toAddress" name="toAddress" value="<%= data.toAddress %>"><br>
         <% if (errors.toAddress) { %>
         <div class="error">
             <%= errors.toAddress.msg %>
@@ -36,7 +36,7 @@
     </div>
     <div class="form-field <%= errors.time ? 'form-field-invalid' : '' %>">
         Време:
-        <br><label for="time"></label><input class="input" type="text" id="time" name="time" value=<%= data.time %>>
+        <br><label for="time"></label><input class="input" type="text" tabindex="3" id="time" name="time" value=<%= data.time %>>
         <br>
         <% if (errors.time) { %>
         <div class="error">
@@ -46,7 +46,7 @@
     </div>
     <div class="form-field <%= errors.carDetails ? 'form-field-invalid' : '' %>">
         Детайли за колата:
-        <br><label for="carDetails"></label><input class="input" type="text" id="carDetails" name="carDetails" value="<%= data.carDetails %>"><br>
+        <br><label for="carDetails"></label><input class="input" type="text" tabindex="4" id="carDetails" name="carDetails" value="<%= data.carDetails %>"><br>
         <% if (errors.carDetails) { %>
         <div class="error">
             <%= errors.carDetails.msg %>
